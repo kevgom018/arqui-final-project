@@ -3,8 +3,8 @@ This repository holds the documentation for the final project of the CIIC 4082 c
 
 # Overview
 - Instructions -> [instructions.txt](instructions.txt)
-- Editable Documentation -> [/docs/documentation.adoc](documentation.adoc)
-- Submittable Documentation -> [/docs/documentation.pdf](documentation.pdf)
+- Editable Documentation -> [documentation.adoc](/docs/documentation.adoc)
+- Submittable Documentation -> [documentation.pdf](/docs/documentation.pdf)
 - Test groups and cases ->  [/tests](/tests)
 - Main Circuit -> [RISC V CPU](https://circuitverse.org/simulator/edit/ciic4082_native_single_cycle_riscv-493de537-b42c-4f63-b8da-7b97ee345f76)
 
