@@ -1,0 +1,63 @@
+Fecha Máxima de Entrega: 8 de Junio 2026
+
+Tipo de Entrega: Reporte en formato PDF
+
+El objetivo de esta actividad es profundizar el entendimiento en la propagación de señales de un procesador RISC-V mediante el uso de simuladores digitales. Se espera que el estudiante no sólo aprenda a analizar diseños ya existentes sino que también realice protocolos de pruebas de los mismos.
+
+Este mini-proyecto está dividido en 3 partes:
+
+(1) decodificación de la memoria de instrucciones.
+
+(2) validación independiente de los bloques por separado.
+
+ (3) validación del procesador corriendo una secuencia de instrucciones.
+
+Cada equipo deberá al final entregar un reporte en formato PDF en el cual documenten cada una de las 3 partes.
+
+En la imagen ilustrada se puede ver un procesador RV32I con todas sus conexiones completamente funcional. Este diagrama fue desarrollado utilizando la plataforma CircuitVerse. El enlace a este diseño se encuenta disponible aquí. Usted deberá crear una copia personal utilizando el comando "Fork". La ayuda sobre cómo trabajar la herramienta la puede encontrar en este enlace. Es su responsabilidad aprender a utilizarlo. Algunas consideraciones que les doy son las siguientes:
+
+    Los elementos de tipo "Flag" indican puntos de medida que se mapean directamente al "TIMING DIAGRAM" para poder monitorear sus valores. Puede utilizar los bloques que ya existen o añadir nuevos puntos de medición. Recuerde siempre ajustar el parámetro "BitWidth" de acuerdo a la señal que va a medir para evitar errores.
+    Por facilidad de entendimiento, este procesador trabaja los datos a 8 bits. Sin embargo, el PC y las instrucciones están a 32 bits.
+    El Reset es de tipo síncrono. Es decir, si usted desea reiniciar el PC y las memorias, deberá hacer click en el bloque de Reset para que tenga un valor de 1 y luego forzar un ciclo de reloj en el elemento "Clock".
+    El diseño principal "main" representa la union de varios subsistemas representados por cada uno de los bloques. Al hacerles doble click usted podrá ver los elementos internos del mismo. Sin embargo, esta vista interna no funciona en contexto con la simulación del main. Por lo tanto, si usted quiere ver una señal interna de algún bloque, deberá insertar un nuevo puerto de salida usando el bloque "output".
+     
+     
+
+Parte 1: Decodificación de instrucciones (15%)
+
+En este paso se requiere que ingrese al bloque "instr_mem" y determine cuales instrucciones tiene grabadas internamente. Por simplicidad, la memoria de instrucciones tiene una capacidad de 8 words o 32 bits.
+
+Entregable: Debe decodificar el binario de estas instrucciones y especificar qué instrucciones son las que van a correr en este procesador en lenguaje assembler.
+
+Parte 2: Prueba individual de componentes (45%)
+
+En este paso deberán ingresar a los siguientes bloques y ejecutar las pruebas necesarias para garantizar que funcionan para todos los posibles casos:
+
+    instr_mem
+    reg_file
+    control_unit
+    imm_gen
+    ALU
+    data_mem
+
+Por ejemplo, para el bloque ALU, deberán ingresar al diseño interno del bloque y modificar los valores de a, b y alu_ctrl y observar la señal de "result". Su prueba deberá identificar los pasos del protocolo. POr ejemplo, en este caso se probaría: (1) suma de números positivos. (2) suma de números negativos. (3) Resta de números positivos. (4) resta de números negativos. (5) and de dos números. (6) or de dos números. En este caso, deberían correr estas 6 pruebas con diferentes valores de alu_ctrl y unos valores cualquiera de a y b según lo requiera.
+
+Para los elementos de memoria, deberán verificar que guarden valores, que saquen valores por el puerto de salida y que respondan a la señal de reset. Todo esto de manera síncrona según sea necesario.
+
+Para los otros bloques, parte del desafío es que ustedes mismos provean el protocolo de pruebas que consideren conveniente.
+
+Entregable: (1) por cada bloque deberán mostrar el protocolo de pruebas paso a paso. (2) Documentar los resultados de cada una de estas pruebas en cada bloque internamente por separado. Un buen reporte de pruebas debe dejar explícitamente claro que cada bloque está listo para ser utilizado en el procesador y no habrán problemas. Su calificación en este ítem dependerá de la claridad que su grupo tenga para dejar claro el protocolo y los resultados.
+
+Parte 3: Validación del Procesador con las Instrucciones Dadas (40%)
+Por último, deberán correr el "Main" paso a paso usando el botón de "Clock" y observando los resultados. En este caso, deben hacer lo mismo que hicieron para la parte 2: Desarrollar un protocolo de pruebas indicando las señales de interés por cada instrucción y documentando los resultados.
+
+En esta parte pueden agregar puntos de medida adicionales para documentar que la instrucción cumplió. Por ejemplo, si una instrucción escribe sobre el registro x7, pueden entrar al bloque reg_file y crear un puerto de salida con el bloque "output" para mostrar en el "Main" su valor al terminar dicha instrucción.
+
+Entregable: (1) por cada instrucción en la memoria de instrucciones deberán indicar el protocolo de pruebas indicando qué señales se deben monitorear para verificar que el procesador ejecuta correctamente. (2) Mostrar los resultados en los que explícitamente quede claro que cada instrucción cumplió con su descripción.
+
+Política de plagio: El entregable quedará completamente anulado si se descubre que usted reutilizó material de otro grupo.
+
+Fecha de entrega y política de entrega tardía: La fecha de entrega es el 8 de junio de 2026 con el fin de dar tiempo para calificar los entregables. Sin embargo, se deducirá un 20% por cada día de tardanza a partir de la 1:00am del 9 junio de 2026. Luego del tercer día (60% de rebaja), la calificación será de cero en la entrega. Si usted considera que requiere una calificación de incompleto, puede dejármelo saber.
+
+Evaluación de pares: Al igual que en en el mini-proyecto 1, se hará evaluación de pares
+
