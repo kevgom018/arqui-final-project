@@ -1,0 +1,25 @@
+= RISC-V Processor Testing and Validation Report
+:students: Kevin Gomez, Karellen Velazquez
+:course: CIIC 4082
+:professor: Prof. Juan Patarroyo
+
+:toc: left
+:toclevels: 2
+:sectnums:
+
+[.text-center]
+*Students:* {students} +
+*Class:* {course} +
+*Professor:* {professor}
+
+include::sections/01-introduction.adoc[]
+
+include::sections/02-architecture.adoc[]
+
+include::sections/03-part1-decoding.adoc[]
+
+include::sections/04-part2-components.adoc[]
+
+include::sections/05-part3-validation.adoc[]
+
+include::sections/06-conclusion.adoc[]

@@ -1,0 +1,25 @@
+== Part 2: Individual Component Testing
+
+Component-level testing validated that each processor subsystem functions correctly in isolation before integration into the complete data path. This phase ensures that issues are identified and resolved at the component level, simplifying debugging of whole-processor behavior.
+
+The testing methodology for each component involved:
+
+. Developing a comprehensive test protocol using the CircuitVerse TESTBENCH that exercises various operational modes and edge cases
+. Observing test results and ensuring they all pass
+. Documenting results to provide evidence of correct operation
+. Exporting test cases as csv files to save for future use and documentation
+
+The following subsections document the testing of each major component:
+
+
+include::component-instr-memory.adoc[]
+
+include::component-register-file.adoc[]
+
+include::component-control-unit.adoc[]
+
+include::component-imm-gen.adoc[]
+
+include::component-alu.adoc[]
+
+include::component-data-memory.adoc[]

@@ -1,0 +1,21 @@
+== Part 1: Instruction Memory Decoding
+
+The instruction memory block contains the program instructions that define the processor's behavior during validation.
+
+=== Decoding Protocol
+
+To decode the instruction memory contents, we accessed the `instr_mem` block within the CircuitVerse design and observed the binary instruction values stored at each memory address. Each 32-bit instruction follows the RISC-V instruction encoding format, with specific bit fields defining the operation, source registers, destination register, and immediate values.
+
+The decoding process involved:
+
+. Identifying the opcode (bits [6:0]) to determine instruction type
+. Extracting the rd (destination register), rs1 (source 1), and rs2 (source 2) fields
+. Parsing function code fields (funct3, funct7) that refine the operation
+. Decoding immediate values for I-type, S-type, and B-type instructions
+. Translating the binary encoding to RISC-V assembly code
+
+=== Documented Instructions
+
+**TODO: Insert decoded instructions and their assembly equivalents here.**
+
+The identified instructions form the test sequence executed during Part 3 processor validation.

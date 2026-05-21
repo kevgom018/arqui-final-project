@@ -1,0 +1,32 @@
+== Part 3: Processor Integration and Validation
+
+After verifying individual components, the complete processor must be validated executing the full instruction sequence. This integration phase confirms that components interact correctly and that the processor achieves the intended behavior when executing real programs.
+
+=== Testing Protocol
+
+Processor validation is performed using the CircuitVerse simulation environment shown below:
+
+**TODO: add screenshot of the full simulated circuit**
+
+**TODO: add short intro**
+
+=== Signal Monitoring Points
+
+Key signals to observe during execution include:
+
+* Program Counter (PC): Current instruction address
+* Current Instruction (Inst): The 32-bit instruction value fetched from instruction memory
+* ALU Result: Output of the arithmetic logic unit
+* Register File Write Enable and Write Data: Values being written to registers
+* Data Memory Address, Write Enable, Read Enable Write Data, and Read Data: Memory access operations
+* Zero Flag and Other Status Indicators: Condition flags from arithmetic operations
+
+**TODO: fill in (lo que esta puesto hasta ahora es porque eso imagino que va a ser pero no lo he actually hecho so no se)**
+
+=== Instruction Execution Verification
+
+**TODO: fill in**
+
+=== Processor Validation Results
+
+**TODO: fill in**

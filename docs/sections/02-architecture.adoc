@@ -1,0 +1,24 @@
+== Processor Architecture Overview
+
+The RISC-V processor implemented in this project follows a modular design with distinct functional blocks that interact through well-defined signal interfaces. Understanding the architecture is essential for developing effective test strategies and interpreting component behavior in context.
+
+=== System Architecture
+
+The processor is composed of the following primary subsystems:
+
+**TODO: add screenshots from CircuitVerse for each component**
+
+- *Instruction Memory (instr_mem)*: Holds the program instructions to be executed. Stores 8 words of 32-bit instruction data.
+- *Register File (reg_file)*: Provides 8 registers for operand storage and intermediate computation results.
+- *Control Unit (control_unit)*: Decodes instructions and generates control signals that coordinate subsystem operation.
+- *Immediate Generator (imm_gen)*: Extracts and extends immediate values embedded within instructions.
+- *Arithmetic Logic Unit (ALU)*: Performs arithmetic and logical operations on operands.
+- *Data Memory (data_mem)*: Stores and retrieves program data during execution.
+
+These components operate synchronously, with state changes occurring on clock edges. The processor employs synchronous reset, requiring the reset signal to be asserted high followed by a clock pulse to reinitialize the PC and memory elements.
+
+=== Data Path and Signal Flow
+
+Instructions are fetched sequentially from instruction memory based on the current PC value. The control unit decodes each instruction, extracting opcode, function codes, and register indices. Operands are retrieved from the register file, immediate values are generated as needed, and the ALU or data memory perform the specified operation. Results are written back to the register file, and the PC advances to the next instruction address.
+
+Throughout execution, key signal points such as instruction values, operand data, ALU results, and memory access addresses are available for measurement and verification, enabling detailed observation of processor operation at any instruction cycle.

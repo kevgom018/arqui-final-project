@@ -1,0 +1,13 @@
+== Introduction
+
+This report documents the comprehensive testing and validation of a 32-bit RISC-V processor implemented in  https://circuitverse.org/simulator/edit/ciic4082_native_single_cycle_riscv-493de537-b42c-4f63-b8da-7b97ee345f76[CircuitVerse]. The objective is to verify correct operation of all major processor components and confirm proper instruction execution across the entire processor pipeline.
+
+The project is organized into three phases:
+
+. *Part 1 - Instruction Memory Decoding*: Identification and analysis of the instruction set stored in the processor's instruction memory
+. *Part 2 - Individual Component Testing*: Systematic verification of each processor subsystem in isolation
+. *Part 3 - Processor Integration Testing*: End-to-end validation of the complete processor executing the full instruction sequence
+
+Each phase includes detailed test protocols, measurements at critical signal points using the CircuitVerse Flag element, and verification that each component or instruction meets its functional specification.
+
+The processor operates on 8-bit data but uses 32-bit instruction and program counter (PC) values, as specified in the reference design. Flags are strategically placed throughout the design to enable real-time signal observation and verification during simulation.
