@@ -1,4 +1,4 @@
-= RISC-V Processor Testing and Validation Report
+= Signal Propagation in Single Cycle RV32I
 :students: Kevin Gomez, Karellen Velazquez
 :course: CIIC 4082
 :professor: Prof. Juan Patarroyo
