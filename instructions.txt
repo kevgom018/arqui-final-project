@@ -20,12 +20,12 @@ En la imagen ilustrada se puede ver un procesador RV32I con todas sus conexiones
     Por facilidad de entendimiento, este procesador trabaja los datos a 8 bits. Sin embargo, el PC y las instrucciones están a 32 bits.
     El Reset es de tipo síncrono. Es decir, si usted desea reiniciar el PC y las memorias, deberá hacer click en el bloque de Reset para que tenga un valor de 1 y luego forzar un ciclo de reloj en el elemento "Clock".
     El diseño principal "main" representa la union de varios subsistemas representados por cada uno de los bloques. Al hacerles doble click usted podrá ver los elementos internos del mismo. Sin embargo, esta vista interna no funciona en contexto con la simulación del main. Por lo tanto, si usted quiere ver una señal interna de algún bloque, deberá insertar un nuevo puerto de salida usando el bloque "output".
-     
-     
+
+
 
 Parte 1: Decodificación de instrucciones (15%)
 
-En este paso se requiere que ingrese al bloque "instr_mem" y determine cuales instrucciones tiene grabadas internamente. Por simplicidad, la memoria de instrucciones tiene una capacidad de 8 words o 32 bits.
+En este paso se requiere que ingrese al bloque "instr_mem" y determine cuales instrucciones tiene grabadas internamente. Por simplicidad, la memoria de instrucciones tiene una capacidad de 8 words a 32 bits.
 
 Entregable: Debe decodificar el binario de estas instrucciones y especificar qué instrucciones son las que van a correr en este procesador en lenguaje assembler.
 
