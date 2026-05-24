@@ -1,15 +1,78 @@
 === Control Unit
 
-**TODO: fill in**
+The Control Unit decodes the instruction opcode and function fields to generate the processor control signals. It translates `op`, `f3`, and `f7` inputs into branch, memory, ALU, and register control outputs used by the datapath.
 
 ==== Specifications
 
-**TODO: fill in**
+- *op* (7-bit): Opcode field from the instruction.
+- *f3* (3-bit): funct3 field (function sub-code).
+- *f7* (7-bit): funct7 field (function sub-code).
+- *branch* (1-bit): Asserted for branch instructions.
+- *mem_wr* (1-bit): Memory write enable for store instructions.
+- *mem_rd* (1-bit): Memory read enable for load instructions.
+- *mem_to_reg* (1-bit): Select memory data for writeback.
+- *alu_ctrl* (3-bit): ALU operation code (mapped to ALU control inputs).
+- *alu_src* (1-bit): Select immediate as ALU second operand.
+- *reg_wr* (1-bit): Register file write enable.
+
+Note: For load (`LW`), store (`SW`) and branch-equal (`BEQ`) instruction types, the `f3` and `f7` fields do not affect the control signals in this implementation; they are treated as don't-care bits marked with "X", this implies that injecting either "0" or "1" at the position yielded the exact same result.
 
 ==== Testing Methodology
 
-**TODO: fill in**
+The test suite provides opcode and function-field patterns and verifies the generated control signals. Test cases exercise:
+
+. *R-type variants*: Multiple `f3`/`f7` combinations that map to different `alu_ctrl` values and exercise register-write behavior, specifically for the ADD, SUB, AND, and OR instructions in that order.
+. *Load (LW)*: Confirms memory-read path and memory-to-register selection.
+. *Store (SW)*: Confirms memory-write enable and ALU source selection for addressing.
+. *Branch (BEQ)*: Verifies branch output assertion for branch-type opcodes.
+
+Each category uses representative binary encodings from the CSV tests and checks the seven control outputs.
+
+==== Test Cases and Results
+
+===== R-Type Variants
+
+[cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+|===
+| op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
+| 0110011 | 000 | 0000000 | 0 | 0 | 0 | 0 | 000 | 0 | 1
+| 0110011 | 000 | 0100000 | 0 | 0 | 0 | 0 | 001 | 0 | 1
+| 0110011 | 111 | 0000000 | 0 | 0 | 0 | 0 | 010 | 0 | 1
+| 0110011 | 110 | 0000000 | 0 | 0 | 0 | 0 | 011 | 0 | 1
+|===
+
+These R-type test cases validate decoding into register-write operations and correct `alu_ctrl` selection for different function fields.
+
+===== Load (LW)
+
+[cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+|===
+| op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
+| 0000011 | XXX | XXXXXXX | 0 | 0 | 1 | 1 | 000 | 1 | 1
+|===
+
+This test case confirms that a load instruction asserts `mem_rd`, selects memory data for writeback, and uses the immediate as the ALU source.
+
+===== Store (SW)
+
+[cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+|===
+| op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
+| 0100011 | XXX | XXXXXXX | 0 | 1 | 0 | 0 | 000 | 1 | 0
+|===
+
+The store test case verifies `mem_wr` assertion and that the ALU uses the immediate for address calculation; no register write is performed.
+
+===== Branch (BEQ)
+
+[cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+|===
+| op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
+| 1100011 | XXX | XXXXXXX | 1 | 0 | 0 | 0 | 001 | 0 | 0
+|===
+
+The branch test case validates that the `branch` control is asserted for a branch-type opcode and that no memory or register writes occur.
 
 ==== Verification
 
-**TODO: fill in**
+All test cases produced the expected control outputs. The Control Unit decoding behavior matches the test encodings and the don't-care handling for `f3`/`f7` in LW, SW, and BEQ cases. The component is validated and ready for integration into the processor data path.
