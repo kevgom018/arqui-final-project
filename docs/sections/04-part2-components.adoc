@@ -4,7 +4,7 @@ Component-level testing validated that each processor subsystem functions correc
 
 The testing methodology for each component involved:
 
-. Developing a comprehensive test protocol using the CircuitVerse TESTBENCH that exercises various operational modes and edge cases
+. Developing a comprehensive test suite using the CircuitVerse TESTBENCH that exercises various operational modes and edge cases
 . Observing test results and ensuring they all pass
 . Documenting results to provide evidence of correct operation
 . Exporting test cases as csv files to save for future use and documentation
