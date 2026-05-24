@@ -1,15 +1,33 @@
 === Instruction Memory
 
-**TODO: fill in**
+The Instruction Memory is a read-only combinational memory that provides a 32-bit instruction word for a given 32-bit address. It is used by the instruction fetch stage to supply the next instruction based on the program counter.
 
 ==== Specifications
 
-**TODO: fill in**
+- *addr* (32-bit): Byte address input (word-aligned expected).
+- *inst* (32-bit): Instruction word output stored at the given address.
+
+The component performs a direct address-to-word lookup, addresses are expected to be aligned to 4-byte boundaries.
 
 ==== Testing Methodology
 
-**TODO: fill in**
+Verification supplies known 32-bit addresses and checks that the component returns the exact 32-bit instruction stored at each location. Tests exercise a contiguous region of addresses at the start of memory to confirm correct storage and address decoding.
+
+==== Test Cases and Results
+
+[cols="1,1", options="header"]
+|===
+| Input addr | Output inst
+| 00000000000000000000000000000000 (0) | 00000000000000000010000010000011
+| 00000000000000000000000000000100 (4) | 00000000001000001000000100110011
+| 00000000000000000000000000001000 (8) | 00000000001000000010000010100011
+| 00000000000000000000000000001100 (12) | 00000000001100011000010001100011
+| 00000000000000000000000000010000 (16) | 01000000011000111000001000110011
+| 00000000000000000000000000010100 (20) | 00000000001000001110001010110011
+| 00000000000000000000000000011000 (24) | 00000000000000000000000000010011
+| 00000000000000000000000000011100 (28) | 00000000000000000000000000010011
+|===
 
 ==== Verification
 
-**TODO: fill in**
+All supplied addresses returned the expected 32-bit instruction words. The Instruction Memory lookup and address decoding are verified for the tested address range.
