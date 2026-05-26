@@ -4,12 +4,15 @@ The Arithmetic Logic Unit is a combinational circuit that performs binary arithm
 
 ==== Specifications
 
-The ALU module operates on 8-bit operands and produces an 8-bit result along with status flags. The output signals are:
-
+- *a* (8-bit): The first operand for the ALU operation
+- *b* (8-bit): The second operand for the ALU operation
+- *alu_ctrl* (3-bit): The control signal selecting the ALU operation
 - *result* (8-bit): The computed arithmetic or logical result
 - *zero* (1-bit): A flag asserted high when the result equals zero
 
-The ALU responds to a 3-bit control signal (`alu_ctrl`) that selects the operation, however the most significant bit is unused given only 4 operations, representable by 2 bits, are implemented. The most significant bit is hence marked as "X" meaning "don't care", this implies that injecting either "0" or "1" at the position yielded the exact same result. The supported operations are defined as follows:
+NOTE: The most significant bit of the `alu_ctrl` signal is treated as a "don't care" bit given only 4 operations, representable by 2 bits, are implemented.
+
+The supported operations are defined as follows:
 
 [cols="1,2,3", options="header"]
 |===

@@ -15,7 +15,7 @@ The Control Unit decodes the instruction opcode and function fields to generate 
 - *alu_src* (1-bit): Select immediate as ALU second operand.
 - *reg_wr* (1-bit): Register file write enable.
 
-Note: For load (`LW`), store (`SW`) and branch-equal (`BEQ`) instruction types, the `f3` and `f7` fields do not affect the control signals in this implementation; they are treated as don't-care bits marked with "X", this implies that injecting either "0" or "1" at the position yielded the exact same result.
+NOTE: For load (`LW`), store (`SW`) and branch-equal (`BEQ`) instruction types, the `f3` and `f7` fields do not affect the control signals in this implementation, hence the "don't care" designation.
 
 ==== Testing Methodology
 

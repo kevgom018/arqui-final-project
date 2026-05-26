@@ -9,6 +9,9 @@ The testing methodology for each component involved:
 . Documenting results to provide evidence of correct operation
 . Exporting test cases as csv files to save for future use and documentation
 
+NOTE: Some input bits are marked with "X", meaning they are treated as don't-care bits, this implies that injecting either "0" or "1" at the corresponding position yielded the exact same result for that test case.
+
+
 The following subsections document the testing of each major component:
 
 
