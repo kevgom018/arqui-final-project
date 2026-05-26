@@ -4,6 +4,10 @@ The Instruction Memory is a read-only combinational memory that provides a 32-bi
 
 ==== Specifications
 
+Below we see the Instruction Memory circuit in CircuitVerse, with the input and output signals labeled for clarity:
+
+image::./images/instr_mem.png[Instruction Memory Circuit Diagram, pdfwidth=100%, align=center]
+
 - *addr* (32-bit): Byte address input (word-aligned expected).
 - *inst* (32-bit): Instruction word output stored at the given address.
 

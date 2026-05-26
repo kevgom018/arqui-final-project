@@ -4,9 +4,9 @@ After verifying individual components, the complete processor must be validated 
 
 === Testing Protocol
 
-Processor validation is performed using the CircuitVerse simulation environment shown below:
+Full processor validation is performed using the CircuitVerse simulation environment shown below:
 
-**TODO: add screenshot of the full simulated circuit**
+image::./images/full_processor.png[Full Processor Simulation in CircuitVerse, pdfwidth=100%, align=center]
 
 **TODO: add short intro**
 

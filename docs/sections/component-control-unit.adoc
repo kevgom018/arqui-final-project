@@ -4,6 +4,10 @@ The Control Unit decodes the instruction opcode and function fields to generate 
 
 ==== Specifications
 
+Below we see the Control Unit circuit in CircuitVerse, with the input and output signals labeled for clarity:
+
+image::./images/control_unit.png[Control Unit Circuit Diagram, pdfwidth=100%, align=center]
+
 - *op* (7-bit): Opcode field from the instruction.
 - *f3* (3-bit): funct3 field (function sub-code).
 - *f7* (7-bit): funct7 field (function sub-code).

@@ -6,8 +6,6 @@ The RISC-V processor implemented in this project follows a modular design with d
 
 The processor is composed of the following primary subsystems:
 
-**TODO: add screenshots from CircuitVerse for each component**
-
 - *Instruction Memory (instr_mem)*: Holds the program instructions to be executed. Stores 8 words of 32-bit instruction data.
 - *Register File (reg_file)*: Provides 8 registers for operand storage and intermediate computation results.
 - *Control Unit (control_unit)*: Decodes instructions and generates control signals that coordinate subsystem operation.

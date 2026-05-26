@@ -4,6 +4,10 @@ The Arithmetic Logic Unit is a combinational circuit that performs binary arithm
 
 ==== Specifications
 
+Below we see the ALU circuit in CircuitVerse, with the input and output signals labeled for clarity:
+
+image::./images/alu.png[ALU Circuit Diagram, pdfwidth=100%, align=center]
+
 - *a* (8-bit): The first operand for the ALU operation
 - *b* (8-bit): The second operand for the ALU operation
 - *alu_ctrl* (3-bit): The control signal selecting the ALU operation
