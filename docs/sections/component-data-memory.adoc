@@ -1,15 +1,66 @@
 === Data Memory
 
-**TODO: fill in**
+The Data Memory is a sequential component used to store and retrieve data values during load and store instructions. In this simplified processor, the data memory contains eight 8-bit memory locations.
 
 ==== Specifications
 
-**TODO: fill in**
+The Data Memory component has the following input and output signals:
+
+[cols="1,1,3", options="header"]
+|===
+| Signal
+| Bitwidth
+| Description
+
+| `clk_in`
+| 1
+| Clock input. Memory writes and reset behavior occur synchronously when the clock is triggered.
+
+| `reset`
+| 1
+| Synchronous reset signal. When enabled and the clock is triggered, the memory returns to its initialized values.
+
+| `mem_write`
+| 1
+| Memory write enable signal. When `mem_write = 1`, the value on `wd` is stored at the selected address on a clock pulse.
+
+| `mem_read`
+| 1
+| Memory read enable signal. When `mem_read = 1`, the selected memory value appears at the output `rd`.
+
+| `addr`
+| 6
+| Memory address input used to select the memory location.
+
+| `wd`
+| 8
+| Write data input. This value is written into memory when `mem_write = 1`.
+
+| `rd`
+| 8
+| Read data output.
+|===
+
+The memory read output depends on `mem_read`. When `mem_read = 1`, the memory outputs the selected value. When `mem_read = 0`, the output is disabled or returns zero depending on the circuit behavior. Writes occur only when `mem_write = 1` and a clock pulse is applied.
 
 ==== Testing Methodology
 
-**TODO: fill in**
+The Data Memory was tested inside CircuitVerse by manually applying address, write data, read enable, write enable, reset, and clock values.
+
+The tests were designed to verify the following behavior:
+
+. The memory responds correctly to reset.
+. The memory outputs initialized values when read.
+. A memory location can be written when `mem_write = 1`.
+. The written memory value can be read back correctly.
+. A memory location is not modified when `mem_write = 0`.
+. The read output is disabled when `mem_read = 0`.
+. The memory returns to its initialized values after reset.
+
+The complete test cases are documented in `tests/Data Memory Tests.csv`.
 
 ==== Verification
 
-**TODO: fill in**
+All test cases produced the expected data memory outputs. The reset test confirmed that the memory returns to its initialized values when `reset` is asserted and a clock pulse is applied. The read tests confirmed that the output `rd` correctly reflects the value stored at the selected address when `mem_read = 1`.
+
+The write tests verified that memory locations are updated only when `mem_write = 1` and the clock is triggered. The disabled-write test confirmed that memory contents remain unchanged when `mem_write = 0`. The disabled-read test confirmed that the output is cleared when `mem_read = 0`. Therefore, the Data Memory component is validated and ready for integration into the processor data path.

@@ -1,17 +1,72 @@
 === Register File
 
-**TODO: fill in**
+The Register File is a sequential component used to store and provide access to the processor registers. In this simplified RV32I single-cycle processor, the register file contains eight 8-bit registers. The component has two read ports and one write port, allowing the processor to read two source operands and write one destination value.
 
 ==== Specifications
 
-**TODO: fill in**
+The Register File component has the following input and output signals:
 
+[cols="1,1,3", options="header"]
+|===
+| Signal
+| Bitwidth
+| Description
+
+| `we`
+| 1
+| Write enable signal. When `we = 1`, the selected destination register is updated on a clock pulse.
+
+| `clk_in`
+| 1
+| Clock input. Writes and reset behavior occur synchronously when the clock is triggered.
+
+| `reset`
+| 1
+| Synchronous reset signal. When enabled and the clock is triggered, the register file returns to its initialized values.
+
+| `rd`
+| 3
+| Destination register address used for writing.
+
+| `rs1`
+| 3
+| Source register address for the first read port.
+
+| `rs2`
+| 3
+| Source register address for the second read port.
+
+| `wd`
+| 8
+| Write data input. This is the value stored into the selected register when `we = 1`.
+
+| `rd1`
+| 8
+| First read data output, selected by `rs1`.
+
+| `rd2`
+| 8
+| Second read data output, selected by `rs2`.
+|===
+
+The read ports are combinational, meaning that `rd1` and `rd2` change when `rs1` and `rs2` are changed. The write operation is synchronous, so the selected register only changes after a clock pulse when `we = 1`.
 
 ==== Testing Methodology
 
-**TODO: fill in**
+The Register File was tested inside CircuitVerse by manually changing the input values and observing the outputs `rd1` and `rd2`.
 
+The tests were designed to verify the following behavior:
+
+. The register file responds correctly to reset.
+. The read ports correctly output the values selected by `rs1` and `rs2`.
+. A register can be written when `we = 1` and the clock is triggered.
+. A register is not modified when `we = 0`, even if a clock pulse is applied.
+. The register file can return to its initialized state after reset.
+
+The complete test cases are documented in `tests/Register File Tests.csv`.
 
 ==== Verification
 
-**TODO: fill in**
+All test cases produced the expected register file outputs. The reset test confirmed that the register file returns to its initialized values when `reset` is asserted and a clock pulse is applied. The read tests confirmed that `rd1` and `rd2` correctly reflect the register values selected by `rs1` and `rs2`.
+
+The write tests verified that a selected register is updated only when `we = 1` and the clock is triggered. The disabled-write test confirmed that when `we = 0`, the register value remains unchanged even if a clock pulse is applied. Therefore, the Register File component is validated and ready for integration into the processor data path.

@@ -1,0 +1,25 @@
+Title,Test Type,Input Count,Output Count
+Data Memory Tests,comb,6,1
+
+
+,"INPUTS","OUTPUTS"
+"Label","clk_in","reset","mem_write","mem_read","addr","wd","rd"
+"Bitwidth","1","1","1","1","6","8","8"
+
+Reset / Initial Read
+"DM_RESET_READ_M0","1","1","0","1","000000","00000000","01010000"
+"DM_READ_M1","0","0","0","1","000001","00000000","01010001"
+"DM_READ_M7","0","0","0","1","000111","00000000","01010111"
+
+Write Enabled
+"DM_WRITE_M2_CC","1","0","1","1","000010","11001100","11001100"
+"DM_WRITE_M4_AA","1","0","1","1","000100","10101010","10101010"
+
+Write Disabled
+"DM_BLOCK_WRITE_M2","1","0","0","1","000010","11111111","11001100"
+
+Read Disabled
+"DM_READ_DISABLED","0","0","0","0","000010","00000000","00000000"
+
+Reset After Writes
+"DM_RESET_AFTER_WRITES_M2","1","1","0","1","000010","00000000","01010010"
