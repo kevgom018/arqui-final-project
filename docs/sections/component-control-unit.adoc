@@ -6,6 +6,7 @@ The Control Unit decodes the instruction opcode and function fields to generate 
 
 Below we see the Control Unit circuit in CircuitVerse, with the input and output signals labeled for clarity:
 
+.Control Unit Circuit Diagram
 image::./images/control_unit.png[Control Unit Circuit Diagram, pdfwidth=100%, align=center]
 
 - *op* (7-bit): Opcode field from the instruction.
@@ -34,9 +35,8 @@ Each category uses representative binary encodings from the CSV tests and checks
 
 ==== Test Cases and Results
 
-===== R-Type Variants
-
 [cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+.R-Type Variants
 |===
 | op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
 | 0110011 | 000 | 0000000 | 0 | 0 | 0 | 0 | 000 | 0 | 1
@@ -47,9 +47,8 @@ Each category uses representative binary encodings from the CSV tests and checks
 
 These R-type test cases validate decoding into register-write operations and correct `alu_ctrl` selection for different function fields.
 
-===== Load (LW)
-
 [cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+.Load (LW)
 |===
 | op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
 | 0000011 | XXX | XXXXXXX | 0 | 0 | 1 | 1 | 000 | 1 | 1
@@ -57,9 +56,8 @@ These R-type test cases validate decoding into register-write operations and cor
 
 This test case confirms that a load instruction asserts `mem_rd`, selects memory data for writeback, and uses the immediate as the ALU source.
 
-===== Store (SW)
-
 [cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+.Store (SW)
 |===
 | op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
 | 0100011 | XXX | XXXXXXX | 0 | 1 | 0 | 0 | 000 | 1 | 0
@@ -67,9 +65,8 @@ This test case confirms that a load instruction asserts `mem_rd`, selects memory
 
 The store test case verifies `mem_wr` assertion and that the ALU uses the immediate for address calculation; no register write is performed.
 
-===== Branch (BEQ)
-
 [cols="^5,^3,^6,^5,^6,^6,^8,^5,^5,^5", options="header"]
+.Branch (BEQ)
 |===
 | op | f3 | f7 | branch | mem_wr | mem_rd | mem_to_reg | alu_ctrl | alu_src | reg_wr
 | 1100011 | XXX | XXXXXXX | 1 | 0 | 0 | 0 | 001 | 0 | 0

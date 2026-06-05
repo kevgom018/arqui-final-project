@@ -2,6 +2,8 @@
 
 The instruction memory block contains the program instructions that define the processor's behavior during validation.
 
+**TODO: Add circuit diagram with labeled signals**
+
 === Decoding Protocol
 
 To decode the instruction memory contents, we accessed the `instr_mem` block within the CircuitVerse design and observed the binary instruction values stored at each memory address. Each 32-bit instruction follows the RISC-V instruction encoding format, with specific bit fields defining the operation, source registers, destination register, and immediate values.
@@ -19,6 +21,7 @@ The decoding process involved:
 The following table shows the decoded instruction memory contents. The instruction memory stores eight 32-bit instructions, each located at word-aligned addresses from `0x00` to `0x1C`.
 
 [cols="1,3,2,2,3", options="header"]
+.Instructions
 |===
 | PC
 | Binary Instruction

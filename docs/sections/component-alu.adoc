@@ -6,6 +6,7 @@ The Arithmetic Logic Unit is a combinational circuit that performs binary arithm
 
 Below we see the ALU circuit in CircuitVerse, with the input and output signals labeled for clarity:
 
+.ALU Circuit Diagram
 image::./images/alu.png[ALU Circuit Diagram, pdfwidth=100%, align=center]
 
 - *a* (8-bit): The first operand for the ALU operation
@@ -19,6 +20,7 @@ NOTE: The most significant bit of the `alu_ctrl` signal is treated as a "don't c
 The supported operations are defined as follows:
 
 [cols="1,2,3", options="header"]
+.ALU Operations
 |===
 | Control Code | Operation | Description
 | X00 | ADD | Binary addition of operands a and b
@@ -42,9 +44,8 @@ Each category includes three test cases covering normal operation, zero results,
 
 ==== Test Cases and Results
 
-===== Addition of Positive Numbers
-
 [cols="1,1,1,1,1", options="header"]
+.Addition of Positive Numbers
 |===
 | Input a | Input b | alu_ctrl | Result | Zero Flag
 | 00000100 (4) | 10000010 (130) | X00 | 10000110 (134) | 0
@@ -54,9 +55,8 @@ Each category includes three test cases covering normal operation, zero results,
 
 Addition of positive operands produces correct sums with the zero flag asserted when both inputs are zero.
 
-===== Addition of Negative Numbers
-
 [cols="1,1,1,1,1", options="header"]
+.Addition of Negative Numbers
 |===
 | Input a | Input b | alu_ctrl | Result | Zero Flag
 | 11111100 (-4) | 11111101 (-3) | X00 | 11111001 (-7) | 0
@@ -66,9 +66,8 @@ Addition of positive operands produces correct sums with the zero flag asserted 
 
 Two's complement negative operands are added correctly, with proper overflow handling within the 8-bit domain.
 
-===== Subtraction of Positive Numbers
-
 [cols="1,1,1,1,1", options="header"]
+.Subtraction of Positive Numbers
 |===
 | Input a | Input b | alu_ctrl | Result | Zero Flag
 | 00001010 (10) | 00000100 (4) | X01 | 00000110 (6) | 0
@@ -78,9 +77,8 @@ Two's complement negative operands are added correctly, with proper overflow han
 
 Subtraction of positive operands generates correct results, including cases where the result is negative.
 
-===== Subtraction of Negative Numbers
-
 [cols="1,1,1,1,1", options="header"]
+.Subtraction of Negative Numbers
 |===
 | Input a | Input b | alu_ctrl | Result | Zero Flag
 | 11111100 (-4) | 11111101 (-3) | X01 | 11111111 (-1) | 0
@@ -90,9 +88,8 @@ Subtraction of positive operands generates correct results, including cases wher
 
 Signed subtraction using two's complement representation produces correct results including scenarios with sign bit inversion.
 
-===== Bitwise AND Operation
-
 [cols="1,1,1,1,1", options="header"]
+.Bitwise AND Operation
 |===
 | Input a | Input b | alu_ctrl | Result | Zero Flag
 | 11110000 | 00001111 | X10 | 00000000 | 1
@@ -102,9 +99,8 @@ Signed subtraction using two's complement representation produces correct result
 
 Bitwise AND correctly implements conjunction logic. Complementary bit patterns produce zero, while overlapping patterns generate appropriate non-zero results.
 
-===== Bitwise OR Operation
-
 [cols="1,1,1,1,1", options="header"]
+.Bitwise OR Operation
 |===
 | Input a | Input b | alu_ctrl | Result | Zero Flag
 | 11110000 | 00001111 | X11 | 11111111 | 0

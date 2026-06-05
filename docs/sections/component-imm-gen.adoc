@@ -4,9 +4,12 @@ The Immediate Generator is a combinational component that extracts immediate val
 
 ==== Specifications
 
+**TODO: Add circuit diagram with labeled signals**
+
 The Immediate Generator component has the following input and output signals:
 
 [cols="1,1,3", options="header"]
+.Immediate Generator Test Cases
 |===
 | Signal
 | Bitwidth

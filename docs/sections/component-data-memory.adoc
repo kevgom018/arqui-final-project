@@ -4,9 +4,12 @@ The Data Memory is a sequential component used to store and retrieve data values
 
 ==== Specifications
 
+**TODO: Add circuit diagram with labeled signals**
+
 The Data Memory component has the following input and output signals:
 
 [cols="1,1,3", options="header"]
+.Data Memory Test Cases
 |===
 | Signal
 | Bitwidth
