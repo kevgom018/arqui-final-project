@@ -50,7 +50,7 @@ The component identifies the instruction type by checking the opcode bits. Based
 | Reconstructs the branch immediate field and outputs it through `imm_b`.
 |===
 
-For the tested branch instruction, the assembly offset is `8` bytes. Internally, this immediate generator outputs the raw branch field as `00000000000000000000000000000100`, which is then used by the datapath branch logic to produce the correct branch target.
+For the tested branch instruction `beq x3, x3, 8`, the Immediate Generator outputs `00000000000000000000000000001000` through `imm_b`, matching the branch offset used by the datapath to compute the correct branch target.
 
 ==== Testing Methodology
 
@@ -85,9 +85,9 @@ The complete test cases are documented in `tests/Immediate Generator Tests.csv`.
 | `imm8=00000001`, `imm_b=00000000000000000000000000000000`
 | Passed
 
-| IG_BEQ_8_RAW
+| IG_BEQ_8
 | `00000000001100011000010001100011`
-| `imm8=00000000`, `imm_b=00000000000000000000000000000100`
+| `imm8=00000000`, `imm_b=00000000000000000000000000001000`
 | Passed
 
 | IG_ADD
@@ -115,4 +115,4 @@ image::./images/imm_gen_beq.png[Immediate Generator BEQ Test, pdfwidth=100%, ali
 
 All test cases produced the expected immediate outputs. The I-type test confirmed that the immediate generator correctly extracts the immediate field for a load instruction. The S-type test confirmed that the component correctly reconstructs the split immediate field used by store instructions.
 
-The B-type test confirmed that the branch immediate field is generated correctly for the `beq` instruction. For `beq x3, x3, 8`, the block outputs the raw branch immediate field as `00000000000000000000000000000100`, matching the observed CircuitVerse behavior. The non-immediate instruction tests confirmed that R-type operations and `nop` do not incorrectly activate the immediate outputs. Therefore, the Immediate Generator component is validated and ready for integration into the processor data path.
+The B-type test confirmed that the branch immediate is generated correctly for the `beq` instruction. For `beq x3, x3, 8`, the block outputs `00000000000000000000000000001000` through `imm_b`, matching the observed CircuitVerse behavior. The non-immediate instruction tests confirmed that R-type operations and `nop` do not incorrectly activate the immediate outputs. Therefore, the Immediate Generator component is validated and ready for integration into the processor data path.
