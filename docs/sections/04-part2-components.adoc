@@ -1,15 +1,15 @@
 == Part 2: Individual Component Testing
 
-Component-level testing validated that each processor subsystem functions correctly in isolation before integration into the complete data path. This phase ensures that issues are identified and resolved at the component level, simplifying debugging of whole-processor behavior.
+Component-level testing validated that each processor subsystem functions correctly in isolation before integration into the complete datapath.
 
-The testing methodology for each component involved:
+The testing methodology for each combinational component involved:
 
-. Developing a comprehensive test suite using the CircuitVerse TESTBENCH that exercises various operational modes and edge cases
+. Developing a test suite using the CircuitVerse TESTBENCH that exercises various operational modes and edge cases
 . Observing test results and ensuring they all pass
 . Documenting results to provide evidence of correct operation
-. Exporting test cases as csv files to save for future use and documentation
+. Exporting test cases as CSV files for future use and documentation
 
-NOTE: Some input bits are marked with "X", meaning they are treated as don't-care bits, this implies that injecting either "0" or "1" at the corresponding position yielded the exact same result for that test case.
+NOTE: Some input bits are marked with "X". These are don't-care bits, so injecting either "0" or "1" at the corresponding position yielded the same result for that test case. Also, sequential components sometimes involved applying inputs and then pulsing the clock to observe changes in the outputs and at times asserting the reset signal to verify proper initialization behavior. This is noted in the test case descriptions where applicable. Finally screenshots of the circuits displaying the correct results where only shown in some cases and not all to avoid overloading the document with images, but all test cases shown in tables were verified to pass in CircuitVerse.
 
 
 The following subsections document the testing of each major component:

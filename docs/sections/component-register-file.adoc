@@ -52,7 +52,7 @@ The Register File component has the following input and output signals:
 | Second read data output, selected by `rs2`.
 |===
 
-The read ports are combinational, meaning that `rd1` and `rd2` change when `rs1` and `rs2` are changed. The write operation is synchronous, so the selected register only changes after a clock pulse when `we = 1`.
+The read ports are combinational, so `rd1` and `rd2` change when `rs1` and `rs2` change. The write operation is synchronous, so the selected register changes only after a clock pulse when `we = 1`.
 
 ==== Testing Methodology
 
@@ -113,4 +113,4 @@ image::./images/reg_file_write_disabled.png[Register File Write Disabled Test, p
 
 All test cases produced the expected register file outputs. The reset test confirmed that the register file returns to its initialized values when `reset` is asserted and a clock pulse is applied. In this implementation, reading `x3` and `x1` after reset produces `rd1=00101011` and `rd2=00101001`.
 
-The write test verified that register `x3` is updated to `10101010` only when `we = 1` and the clock is triggered. The disabled-write test confirmed that when `we = 0`, the register value remains unchanged even if a clock pulse is applied. Finally, the reset-after-write test confirmed that the register file can restore its initialized values after a previous write. Therefore, the Register File component is validated and ready for integration into the processor data path.
+The write test verified that register `x3` is updated to `10101010` only when `we = 1` and the clock is triggered. The disabled-write test confirmed that when `we = 0`, the register value remains unchanged even if a clock pulse is applied. Finally, the reset-after-write test confirmed that the register file can restore its initialized values after a previous write. The Register File component is validated for integration into the processor datapath.

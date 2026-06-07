@@ -1,9 +1,9 @@
 == Conclusion
 
-Component-level testing confirmed the correct operation of individual subsystems, while integration testing verified proper interaction within the complete processor pipeline.
+Component-level testing confirmed the correct operation of individual subsystems, while integration testing verified proper interaction within the complete processor datapath.
 
-The structured approach to validation, testing components in isolation before system-wide integration, ensures that the processor architecture is sound and each element functions as designed. The comprehensive test protocols provide clear evidence of functional correctness and serve as a foundation for confident deployment of the processor design in subsequent applications.
+Testing the components in isolation before system-wide integration ensures that the processor architecture is sound and that each element functions as designed. The test protocols provide evidence of functional correctness and support further use of the processor design.
 
-All major processor subsystems have been verified to meet their functional specifications. The documented test results provide a complete record of validation activities and demonstrate the processor's readiness for operation with the full instruction set.
+All major processor subsystems, as well as the entire processor itself, have been verified to meet their functional specifications. The documented test results provide a complete record of validation activities and demonstrate readiness for operation with the full instruction set.
 
-Once again, the entire evolution of this project, including all testing and validation activities, is available in https://github.com/kevgom018/arqui-final-project[our GitHub repository] for reference and further exploration.
+The full project history, including the testing and validation work, is available in https://github.com/kevgom018/arqui-final-project[our GitHub repository] for reference.

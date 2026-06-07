@@ -1,10 +1,10 @@
 === Instruction Memory
 
-The Instruction Memory is a read-only combinational memory that provides a 32-bit instruction word for a given 32-bit address. It is used by the instruction fetch stage to supply the next instruction based on the program counter.
+The Instruction Memory is a read-only combinational memory that provides a 32-bit instruction word for a given 32-bit address. It supplies the next instruction to the instruction fetch stage based on the program counter.
 
 ==== Specifications
 
-Below we see the Instruction Memory circuit in CircuitVerse, with the input and output signals labeled for clarity:
+The figure below shows the Instruction Memory circuit in CircuitVerse with the input and output signals labeled.
 
 .Instruction Memory Circuit Diagram
 image::./images/instr_mem.png[Instruction Memory Circuit Diagram, pdfwidth=100%, align=center]
@@ -12,11 +12,11 @@ image::./images/instr_mem.png[Instruction Memory Circuit Diagram, pdfwidth=100%,
 - *addr* (32-bit): Byte address input (word-aligned expected).
 - *inst* (32-bit): Instruction word output stored at the given address.
 
-The component performs a direct address-to-word lookup, addresses are expected to be aligned to 4-byte boundaries.
+The component performs a direct address-to-word lookup. Addresses are expected to be aligned to 4-byte boundaries.
 
 ==== Testing Methodology
 
-Verification supplies known 32-bit addresses and checks that the component returns the exact 32-bit instruction stored at each location. Tests exercise a contiguous region of addresses at the start of memory to confirm correct storage and address decoding.
+Verification applies known 32-bit addresses and checks that the component returns the expected 32-bit instruction stored at each location. The tests cover the full range of addresses used during validation, ensuring correct instruction retrieval for all program instructions.
 
 ==== Test Cases and Results
 
@@ -36,4 +36,4 @@ Verification supplies known 32-bit addresses and checks that the component retur
 
 ==== Verification
 
-All supplied addresses returned the expected 32-bit instruction words. The Instruction Memory lookup and address decoding are verified for the tested address range.
+All supplied addresses returned the expected 32-bit instruction words. The tested address range confirms correct lookup and address decoding.

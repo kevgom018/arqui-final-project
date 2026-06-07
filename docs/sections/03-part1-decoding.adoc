@@ -1,13 +1,13 @@
 == Part 1: Instruction Memory Decoding
 
-The instruction memory block contains the program instructions that define the processor's behavior during validation.
+The instruction memory block contains the program instructions used during validation. Which means we must first decode each one to understand the sequence executed by the processor during testing.
 
 .Instruction Memory Circuit Diagram
 image::./images/instr_mem.png[Instruction Memory Circuit Diagram, pdfwidth=100%, align=center]
 
 === Decoding Protocol
 
-To decode the instruction memory contents, we accessed the `instr_mem` block within the CircuitVerse design and observed the binary instruction values stored at each memory address. Each 32-bit instruction follows the RISC-V instruction encoding format, with specific bit fields defining the operation, source registers, destination register, and immediate values.
+To decode the instruction memory contents, we accessed the `instr_mem` block in the CircuitVerse design and observed the binary instruction values stored at each memory address. Each 32-bit instruction follows the RISC-V encoding format, with specific bit fields defining the operation, source registers, destination register, and immediate values.
 
 The decoding process involved:
 
@@ -87,14 +87,13 @@ The instruction sequence executed by the processor is:
 0x04: add  x2, x1, x2
 0x08: sw   x2, 1(x0)
 0x0C: beq  x3, x3, 8
-0x10: sub  x4, x7, x6
 0x14: or   x5, x1, x2
 0x18: addi x0, x0, 0
 0x1C: addi x0, x0, 0
 ----
 
-The branch instruction at address `0x0C` compares `x3` with itself, so the branch condition is true. With an immediate value of `8`, the branch target is `0x14`, meaning that the instruction at `0x10` is skipped when the branch is taken.
+The branch instruction at address `0x0C` compares `x3` with itself, so the branch condition is true. With an immediate value of `8`, the branch target is `0x14`, which skips the instruction at `0x10` when the branch is taken.
 
 The final two instructions are `addi x0, x0, 0`, which is the RISC-V no-operation instruction (`nop`). Since `x0` is always zero, these instructions do not modify the processor state.
 
-The identified instructions form the test sequence executed during Part 3 processor validation.
+These instructions form the test sequence used during Part 3 processor validation.

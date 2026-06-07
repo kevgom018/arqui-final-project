@@ -4,7 +4,7 @@ The Control Unit decodes the instruction opcode and function fields to generate 
 
 ==== Specifications
 
-Below we see the Control Unit circuit in CircuitVerse, with the input and output signals labeled for clarity:
+The figure below shows the Control Unit circuit in CircuitVerse with the input and output signals labeled.
 
 .Control Unit Circuit Diagram
 image::./images/control_unit.png[Control Unit Circuit Diagram, pdfwidth=100%, align=center]
@@ -20,7 +20,7 @@ image::./images/control_unit.png[Control Unit Circuit Diagram, pdfwidth=100%, al
 - *alu_src* (1-bit): Select immediate as ALU second operand.
 - *reg_wr* (1-bit): Register file write enable.
 
-NOTE: For load (`LW`), store (`SW`) and branch-equal (`BEQ`) instruction types, the `f3` and `f7` fields do not affect the control signals in this implementation, hence the "don't care" designation.
+NOTE: For load (`LW`), store (`SW`), and branch-equal (`BEQ`) instruction types, the `f3` and `f7` fields do not affect the control signals in this implementation, so they are treated as don't care.
 
 ==== Testing Methodology
 
@@ -76,4 +76,4 @@ The branch test case validates that the `branch` control is asserted for a branc
 
 ==== Verification
 
-All test cases produced the expected control outputs. The Control Unit decoding behavior matches the test encodings and the don't-care handling for `f3`/`f7` in LW, SW, and BEQ cases. The component is validated and ready for integration into the processor data path.
+All test cases produced the expected control outputs. The Control Unit decoding behavior matches the test encodings and the don't-care handling for `f3`/`f7` in LW, SW, and BEQ cases. The component is validated for integration into the processor datapath.

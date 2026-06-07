@@ -1,10 +1,10 @@
 === ALU Component
 
-The Arithmetic Logic Unit is a combinational circuit that performs binary arithmetic and logical operations. It serves as the primary computational engine for data manipulation throughout instruction execution.
+The Arithmetic Logic Unit is a combinational circuit that performs binary arithmetic and logical operations. It serves as the main computational block for data manipulation during instruction execution.
 
 ==== Specifications
 
-Below we see the ALU circuit in CircuitVerse, with the input and output signals labeled for clarity:
+The figure below shows the ALU circuit in CircuitVerse with the input and output signals labeled.
 
 .ALU Circuit Diagram
 image::./images/alu.png[ALU Circuit Diagram, pdfwidth=100%, align=center]
@@ -15,7 +15,7 @@ image::./images/alu.png[ALU Circuit Diagram, pdfwidth=100%, align=center]
 - *result* (8-bit): The computed arithmetic or logical result
 - *zero* (1-bit): A flag asserted high when the result equals zero
 
-NOTE: The most significant bit of the `alu_ctrl` signal is treated as a "don't care" bit given only 4 operations, representable by 2 bits, are implemented.
+NOTE: The most significant bit of the `alu_ctrl` signal is treated as a don't care bit because only four operations, representable by 2 bits, are implemented.
 
 The supported operations are defined as follows:
 
@@ -31,7 +31,7 @@ The supported operations are defined as follows:
 
 ==== Testing Methodology
 
-The ALU testing protocol exercises all supported operations across diverse operand patterns and edge cases. Six test categories ensure comprehensive coverage:
+The ALU testing protocol exercises all supported operations across diverse operand patterns and edge cases. Six test categories provide coverage:
 
 . *Addition of Positive Numbers*: Validates binary addition with non-negative operands
 . *Addition of Negative Numbers*: Tests two's complement addition with negative operands
@@ -112,4 +112,4 @@ Bitwise OR correctly implements disjunction logic. Complementary patterns combin
 
 ==== Verification
 
-All ALU test cases execute successfully with results matching predicted values. The ALU correctly implements addition, subtraction, AND, and OR operations with proper two's complement handling and accurate zero flag generation. The component is validated and ready for integration into the processor data path.
+All ALU test cases execute successfully with results matching predicted values. The ALU correctly implements addition, subtraction, AND, and OR operations with proper two's complement handling and accurate zero flag generation. The component is validated for integration into the processor datapath.

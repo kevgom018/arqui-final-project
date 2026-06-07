@@ -1,6 +1,6 @@
 === Immediate Generator
 
-The Immediate Generator is a combinational component that extracts immediate values from a 32-bit RISC-V instruction. The generated immediate is used by instructions such as loads, stores, and branches.
+The Immediate Generator is a combinational component that extracts immediate values from 32-bit RISC-V instructions. The generated immediate is used by instructions such as loads, stores, and branches.
 
 ==== Specifications
 
@@ -113,6 +113,6 @@ image::./images/imm_gen_beq.png[Immediate Generator BEQ Test, pdfwidth=100%, ali
 
 ==== Verification
 
-All test cases produced the expected immediate outputs. The I-type test confirmed that the immediate generator correctly extracts the immediate field for a load instruction. The S-type test confirmed that the component correctly reconstructs the split immediate field used by store instructions.
+All test cases produced the expected immediate outputs. The I-type test confirmed that the Immediate Generator correctly extracts the immediate field for a load instruction. The S-type test confirmed that the component correctly reconstructs the split immediate field used by store instructions.
 
-The B-type test confirmed that the branch immediate is generated correctly for the `beq` instruction. For `beq x3, x3, 8`, the block outputs `00000000000000000000000000001000` through `imm_b`, matching the observed CircuitVerse behavior. The non-immediate instruction tests confirmed that R-type operations and `nop` do not incorrectly activate the immediate outputs. Therefore, the Immediate Generator component is validated and ready for integration into the processor data path.
+The B-type test confirmed that the branch immediate is generated correctly for the `beq` instruction. For `beq x3, x3, 8`, the block outputs `00000000000000000000000000001000` through `imm_b`, matching the observed CircuitVerse behavior. The non-immediate instruction tests confirmed that R-type operations and `nop` do not incorrectly activate the immediate outputs. The Immediate Generator component is validated for integration into the processor datapath.
