@@ -2,7 +2,8 @@
 
 The instruction memory block contains the program instructions that define the processor's behavior during validation.
 
-**TODO: Add circuit diagram with labeled signals**
+.Instruction Memory Circuit Diagram
+image::./images/instr_mem.png[Instruction Memory Circuit Diagram, pdfwidth=100%, align=center]
 
 === Decoding Protocol
 
