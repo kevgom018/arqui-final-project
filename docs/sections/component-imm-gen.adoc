@@ -4,7 +4,7 @@ The Immediate Generator is a combinational component that extracts immediate val
 
 ==== Specifications
 
-image::../images/imm_gen.png[Immediate Generator Circuit Diagram, pdfwidth=100%, align=center]
+image::./images/imm_gen.png[Immediate Generator Circuit Diagram, pdfwidth=100%, align=center]
 
 The Immediate Generator component has the following input and output signals:
 
@@ -105,11 +105,11 @@ The complete test cases are documented in `tests/Immediate Generator Tests.csv`.
 
 The following images show the internal CircuitVerse tests used to validate the Immediate Generator behavior.
 
-image::../images/imm_gen_lw.png[Immediate Generator LW Test, pdfwidth=100%, align=center]
+image::./images/imm_gen_lw.png[Immediate Generator LW Test, pdfwidth=100%, align=center]
 
-image::../images/imm_gen_sw.png[Immediate Generator SW Test, pdfwidth=100%, align=center]
+image::./images/imm_gen_sw.png[Immediate Generator SW Test, pdfwidth=100%, align=center]
 
-image::../images/imm_gen_beq.png[Immediate Generator BEQ Test, pdfwidth=100%, align=center]
+image::./images/imm_gen_beq.png[Immediate Generator BEQ Test, pdfwidth=100%, align=center]
 
 ==== Verification
 

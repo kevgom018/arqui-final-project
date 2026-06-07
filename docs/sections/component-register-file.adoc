@@ -4,7 +4,7 @@ The Register File is a sequential component used to store and provide access to 
 
 ==== Specifications
 
-image::../images/reg_file.png[Register File Circuit Diagram, pdfwidth=100%, align=center]
+image::./images/reg_file.png[Register File Circuit Diagram, pdfwidth=100%, align=center]
 
 The Register File component has the following input and output signals:
 
@@ -103,11 +103,11 @@ The complete test cases are documented in `tests/Register File Tests.csv`.
 
 The following images show the internal CircuitVerse tests used to validate the Register File behavior.
 
-image::../images/reg_file_reset.png[Register File Reset Test, pdfwidth=100%, align=center]
+image::./images/reg_file_reset.png[Register File Reset Test, pdfwidth=100%, align=center]
 
-image::../images/reg_file_write.png[Register File Write and Read Test, pdfwidth=100%, align=center]
+image::./images/reg_file_write.png[Register File Write and Read Test, pdfwidth=100%, align=center]
 
-image::../images/reg_file_write_disabled.png[Register File Write Disabled Test, pdfwidth=100%, align=center]
+image::./images/reg_file_write_disabled.png[Register File Write Disabled Test, pdfwidth=100%, align=center]
 
 ==== Verification
 

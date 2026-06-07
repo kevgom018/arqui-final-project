@@ -4,7 +4,7 @@ The Data Memory is a sequential component used to store and retrieve data values
 
 ==== Specifications
 
-image::../images/data_mem.png[Data Memory Circuit Diagram, pdfwidth=100%, align=center]
+image::./images/data_mem.png[Data Memory Circuit Diagram, pdfwidth=100%, align=center]
 
 The Data Memory component has the following input and output signals:
 
@@ -112,15 +112,15 @@ The complete test cases are documented in `tests/Data Memory Tests.csv`.
 
 The following images show the internal CircuitVerse tests used to validate the Data Memory behavior.
 
-image::../images/data_mem_reset.png[Data Memory Reset and Initial Read Test, pdfwidth=100%, align=center]
+image::./images/data_mem_reset.png[Data Memory Reset and Initial Read Test, pdfwidth=100%, align=center]
 
-image::../images/data_mem_write_read.png[Data Memory Write and Read Test, pdfwidth=100%, align=center]
+image::./images/data_mem_write_read.png[Data Memory Write and Read Test, pdfwidth=100%, align=center]
 
-image::../images/data_mem_write_disabled.png[Data Memory Write Disabled Test, pdfwidth=100%, align=center]
+image::./images/data_mem_write_disabled.png[Data Memory Write Disabled Test, pdfwidth=100%, align=center]
 
-image::../images/data_mem_read_disabled.png[Data Memory Read Disabled Test, pdfwidth=100%, align=center]
+image::./images/data_mem_read_disabled.png[Data Memory Read Disabled Test, pdfwidth=100%, align=center]
 
-image::../images/data_mem_reset_after_writes.png[Data Memory Reset After Writes Test, pdfwidth=100%, align=center]
+image::./images/data_mem_reset_after_writes.png[Data Memory Reset After Writes Test, pdfwidth=100%, align=center]
 
 ==== Verification
 
