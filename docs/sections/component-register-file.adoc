@@ -4,12 +4,12 @@ The Register File is a sequential component used to store and provide access to 
 
 ==== Specifications
 
-**TODO: Add circuit diagram with labeled signals**
+image::../images/reg_file.png[Register File Circuit Diagram, pdfwidth=100%, align=center]
 
 The Register File component has the following input and output signals:
 
 [cols="1,1,3", options="header"]
-.Register File Test Cases
+.Register File Signals
 |===
 | Signal
 | Bitwidth
@@ -68,8 +68,49 @@ The tests were designed to verify the following behavior:
 
 The complete test cases are documented in `tests/Register File Tests.csv`.
 
+==== Test Cases and Results
+
+[cols="1,3,3,1", options="header"]
+.Register File Test Cases
+|===
+| Test
+| Inputs Applied
+| Expected Output
+| Result
+
+| RF_RESET_X3_X1
+| `we=0`, `reset=1`, `rd=000`, `rs1=011`, `rs2=001`, `wd=00000000`, clock pulse
+| `rd1=00101011`, `rd2=00101001`
+| Passed
+
+| RF_WRITE_X3_AA
+| `we=1`, `reset=0`, `rd=011`, `rs1=011`, `rs2=001`, `wd=10101010`, clock pulse
+| `rd1=10101010`, `rd2=00101001`
+| Passed
+
+| RF_BLOCK_WRITE_X3
+| `we=0`, `reset=0`, `rd=011`, `rs1=011`, `rs2=001`, `wd=11111111`, clock pulse
+| `rd1=10101010`, `rd2=00101001`
+| Passed
+
+| RF_RESET_AFTER_WRITES
+| `we=0`, `reset=1`, `rd=000`, `rs1=011`, `rs2=001`, `wd=00000000`, clock pulse
+| `rd1=00101011`, `rd2=00101001`
+| Passed
+|===
+
+==== Evidence
+
+The following images show the internal CircuitVerse tests used to validate the Register File behavior.
+
+image::../images/reg_file_reset.png[Register File Reset Test, pdfwidth=100%, align=center]
+
+image::../images/reg_file_write.png[Register File Write and Read Test, pdfwidth=100%, align=center]
+
+image::../images/reg_file_write_disabled.png[Register File Write Disabled Test, pdfwidth=100%, align=center]
+
 ==== Verification
 
-All test cases produced the expected register file outputs. The reset test confirmed that the register file returns to its initialized values when `reset` is asserted and a clock pulse is applied. The read tests confirmed that `rd1` and `rd2` correctly reflect the register values selected by `rs1` and `rs2`.
+All test cases produced the expected register file outputs. The reset test confirmed that the register file returns to its initialized values when `reset` is asserted and a clock pulse is applied. In this implementation, reading `x3` and `x1` after reset produces `rd1=00101011` and `rd2=00101001`.
 
-The write tests verified that a selected register is updated only when `we = 1` and the clock is triggered. The disabled-write test confirmed that when `we = 0`, the register value remains unchanged even if a clock pulse is applied. Therefore, the Register File component is validated and ready for integration into the processor data path.
+The write test verified that register `x3` is updated to `10101010` only when `we = 1` and the clock is triggered. The disabled-write test confirmed that when `we = 0`, the register value remains unchanged even if a clock pulse is applied. Finally, the reset-after-write test confirmed that the register file can restore its initialized values after a previous write. Therefore, the Register File component is validated and ready for integration into the processor data path.

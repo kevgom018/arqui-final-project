@@ -4,12 +4,12 @@ The Data Memory is a sequential component used to store and retrieve data values
 
 ==== Specifications
 
-**TODO: Add circuit diagram with labeled signals**
+image::../images/data_mem.png[Data Memory Circuit Diagram, pdfwidth=100%, align=center]
 
 The Data Memory component has the following input and output signals:
 
 [cols="1,1,3", options="header"]
-.Data Memory Test Cases
+.Data Memory Signals
 |===
 | Signal
 | Bitwidth
@@ -32,7 +32,7 @@ The Data Memory component has the following input and output signals:
 | Memory read enable signal. When `mem_read = 1`, the selected memory value appears at the output `rd`.
 
 | `addr`
-| 6
+| 8
 | Memory address input used to select the memory location.
 
 | `wd`
@@ -44,7 +44,7 @@ The Data Memory component has the following input and output signals:
 | Read data output.
 |===
 
-The memory read output depends on `mem_read`. When `mem_read = 1`, the memory outputs the selected value. When `mem_read = 0`, the output is disabled or returns zero depending on the circuit behavior. Writes occur only when `mem_write = 1` and a clock pulse is applied.
+The memory read output depends on `mem_read`. When `mem_read = 1`, the memory outputs the selected value. When `mem_read = 0`, the output is disabled and returns zero. Writes occur only when `mem_write = 1` and a clock pulse is applied.
 
 ==== Testing Methodology
 
@@ -62,8 +62,68 @@ The tests were designed to verify the following behavior:
 
 The complete test cases are documented in `tests/Data Memory Tests.csv`.
 
+==== Test Cases and Results
+
+[cols="1,3,3,1", options="header"]
+.Data Memory Test Cases
+|===
+| Test
+| Inputs Applied
+| Expected Output
+| Result
+
+| DM_RESET_READ_M0
+| `clk_in=1`, `reset=1`, `mem_write=0`, `mem_read=1`, `addr=00000000`, `wd=00000000`
+| `rd=01010000`
+| Passed
+
+| DM_READ_M1
+| `clk_in=0`, `reset=0`, `mem_write=0`, `mem_read=1`, `addr=00000001`, `wd=00000000`
+| `rd=01010001`
+| Passed
+
+| DM_READ_M7
+| `clk_in=0`, `reset=0`, `mem_write=0`, `mem_read=1`, `addr=00000111`, `wd=00000000`
+| `rd=01010111`
+| Passed
+
+| DM_WRITE_M2_CC
+| `clk_in=1`, `reset=0`, `mem_write=1`, `mem_read=1`, `addr=00000010`, `wd=11001100`
+| `rd=11001100`
+| Passed
+
+| DM_BLOCK_WRITE_M2
+| `clk_in=1`, `reset=0`, `mem_write=0`, `mem_read=1`, `addr=00000010`, `wd=11111111`
+| `rd=11001100`
+| Passed
+
+| DM_READ_DISABLED
+| `clk_in=0`, `reset=0`, `mem_write=0`, `mem_read=0`, `addr=00000010`, `wd=00000000`
+| `rd=00000000`
+| Passed
+
+| DM_RESET_AFTER_WRITES_M2
+| `clk_in=1`, `reset=1`, `mem_write=0`, `mem_read=1`, `addr=00000010`, `wd=00000000`
+| `rd=01010010`
+| Passed
+|===
+
+==== Evidence
+
+The following images show the internal CircuitVerse tests used to validate the Data Memory behavior.
+
+image::../images/data_mem_reset.png[Data Memory Reset and Initial Read Test, pdfwidth=100%, align=center]
+
+image::../images/data_mem_write_read.png[Data Memory Write and Read Test, pdfwidth=100%, align=center]
+
+image::../images/data_mem_write_disabled.png[Data Memory Write Disabled Test, pdfwidth=100%, align=center]
+
+image::../images/data_mem_read_disabled.png[Data Memory Read Disabled Test, pdfwidth=100%, align=center]
+
+image::../images/data_mem_reset_after_writes.png[Data Memory Reset After Writes Test, pdfwidth=100%, align=center]
+
 ==== Verification
 
 All test cases produced the expected data memory outputs. The reset test confirmed that the memory returns to its initialized values when `reset` is asserted and a clock pulse is applied. The read tests confirmed that the output `rd` correctly reflects the value stored at the selected address when `mem_read = 1`.
 
-The write tests verified that memory locations are updated only when `mem_write = 1` and the clock is triggered. The disabled-write test confirmed that memory contents remain unchanged when `mem_write = 0`. The disabled-read test confirmed that the output is cleared when `mem_read = 0`. Therefore, the Data Memory component is validated and ready for integration into the processor data path.
+The write test verified that memory address `00000010` is updated to `11001100` only when `mem_write = 1` and the clock is triggered. The disabled-write test confirmed that memory contents remain unchanged when `mem_write = 0`, since address `00000010` remained equal to `11001100` even when `wd = 11111111`. The disabled-read test confirmed that the output is cleared to `00000000` when `mem_read = 0`. Finally, the reset-after-writes test confirmed that memory address `00000010` returns to its initialized value `01010010` after reset. Therefore, the Data Memory component is validated and ready for integration into the processor data path.
